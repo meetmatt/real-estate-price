@@ -22,3 +22,7 @@ The training script is very coupled to the [sample dataset](./api/data/data.csv)
 
 Frontend is a simple Vite+React+TypeScript app, built during docker build (see [Frontend Dockerfile](./frontend/Dockerfile) for details) served by an nginx container (see [nginx config](./frontend/nginx.conf)).
 Nginx also forwards all requests to /api route down to backend container.
+
+## TODO
+
+- Fix local dev environment to be able to submit form from frontend to backend container without messing with production setup.
