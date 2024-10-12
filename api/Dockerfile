@@ -25,7 +25,7 @@ RUN python src/train.py
 COPY src/api.py /app/src/api.py
 
 # FastAPI will run on port 8000
-EXPOSE 8000
+EXPOSE 80
 
 # Run the FastAPI with uvicorn
-CMD ["uvicorn", "src.api:api", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.api:api", "--host", "0.0.0.0", "--port", "80"]

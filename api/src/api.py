@@ -15,7 +15,7 @@ class PropertyData(BaseModel):
     bedrooms: int
 
 # Define the prediction endpoint
-@api.post("/predict")
+@api.post("/api/predict")
 def predict_price(data: PropertyData):
     # Prepare the features for prediction
     features = np.array([[data.area, data.bedrooms]])

@@ -1,0 +1,8 @@
+services:
+  api:
+    build: api
+
+  frontend:
+    build: frontend
+    ports:
+      - 80:80

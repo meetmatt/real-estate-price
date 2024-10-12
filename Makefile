@@ -1,14 +1,19 @@
 .PHONY: build
 build:
-	docker build -t real-estate-api --progress plain .
+	docker compose build
 
 .PHONY: run
-run:
-	docker run -p 8000:8000 real-estate-api
+run: build
+	docker compose up -d
+	${MAKE} open-frontend
 
-.PHONY: test
-test:
+.PHONE: open-frontend
+open-frontend:
+	open "http://localhost"
+
+.PHONY: test-api
+test-api:
 	@curl -X 'POST' \
-      'http://127.0.0.1:8000/predict' \
+      'http://localhost/api/predict' \
       -H 'Content-Type: application/json' \
       -d '{"area": 120, "bedrooms": 3}'
