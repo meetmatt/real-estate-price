@@ -31,20 +31,27 @@ export default function App() {
       <h2>Price calculator</h2>
       <div>
         <form onSubmit={handleSubmit}>
-          <input
-            type="number"
-            name="area"
-            placeholder="Area in square meters"
-            value={area}
-            onChange={(e) => setArea(Number(e.target.value))}
-          />
-          <input
-            type="number"
-            name="bedrooms"
-            placeholder="Number of bedrooms"
-            value={bedrooms}
-            onChange={(e) => setBedrooms(Number(e.target.value))}
-          />
+          <div className="input">
+            <label htmlFor="area">Area in square meters</label>
+            <input
+              type="number"
+              name="area"
+              id="area"
+              placeholder="Area in square meters"
+              value={area}
+              onChange={(e) => setArea(Number(e.target.value))}
+            />
+          </div>
+          <div className="input">
+            <label htmlFor="area">Number of bedrooms</label>
+            <input
+              type="number"
+              name="bedrooms"
+              placeholder="Number of bedrooms"
+              value={bedrooms}
+              onChange={(e) => setBedrooms(Number(e.target.value))}
+            />
+          </div>
           <button>Submit</button>
         </form>
       </div>
