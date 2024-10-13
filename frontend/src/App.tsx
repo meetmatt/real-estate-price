@@ -8,8 +8,21 @@ interface Data {
 
 export default function App() {
   const [price, setPrice] = useState<number | null>(null);
-  const [area, setArea] = useState(65);
+  const [area, setArea] = useState<number | string>(65);
   const [bedrooms, setBedrooms] = useState(1);
+
+  function handleAreaOnChange(e: React.FormEvent<HTMLInputElement>) {
+    const value = e.currentTarget.value;
+    if (value === "") {
+      setArea("");
+    } else {
+      setArea(Number(value));
+    }
+  }
+
+  function handleBedroomsOnChange(e: React.FormEvent<HTMLSelectElement>) {
+    setBedrooms(Number(e.currentTarget.value));
+  }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -34,23 +47,23 @@ export default function App() {
           <div className="input">
             <label htmlFor="area">Area in square meters</label>
             <input
-              type="number"
+              type="text"
               name="area"
               id="area"
               placeholder="Area in square meters"
               value={area}
-              onChange={(e) => setArea(Number(e.target.value))}
+              onChange={handleAreaOnChange}
             />
           </div>
           <div className="input">
             <label htmlFor="area">Number of bedrooms</label>
-            <input
-              type="number"
-              name="bedrooms"
-              placeholder="Number of bedrooms"
-              value={bedrooms}
-              onChange={(e) => setBedrooms(Number(e.target.value))}
-            />
+            <select name="bedrooms" onChange={handleBedroomsOnChange}>
+              {[...Array(5).keys()].map((i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
           </div>
           <button>Submit</button>
         </form>
